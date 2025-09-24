@@ -29,6 +29,7 @@ const allowedOrigins = [
   /^https:\/\/[a-z0-9\-]+\.ngrok-free\.app$/, // รองรับ ngrok และลองใช้ให้ติดต่อกับ frontend แล้ว ngrok พังเพราะมันมีปัญหาอะไรสักอย่างกับ CORS 
   /^https:\/\/.*\.trycloudflare\.com$/, // รองรับ cloudflare tunnel
   /^https:\/\/[a-z0-9\-]+\.loca\.lt$/, // รองรับ localtunnel
+  "https://puripat.online",
 ];
 
 // CORS whitelist + credentials
