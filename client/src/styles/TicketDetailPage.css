@@ -1,0 +1,759 @@
+/* --- General Page Styles --- */
+.ticket-page-container {
+  max-width: 1200px;
+  margin: 2rem auto; /* ช่องว่างบน-ล่าง */
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+/* --- Header Styles --- */
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* ให้แยกแถวเมื่อจอแคบ */
+  gap: 1rem;
+  border-bottom: 2px solid #f1f1f1;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ticket-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.ticket-title {
+  font-size: clamp(1.8rem, 2.2vw, 2.5rem);
+  font-weight: 700;
+  color: #2d3748;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ticket-id {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.ticket-action-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  min-width: max-content;
+}
+
+/* --- Ticket Grid Styles --- */
+.ticket-grid {
+  display: grid;
+  grid-template-columns: 1fr 350px!important;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* --- Main Content Styles --- */
+.ticket-main {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.ticket-main:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1), 0 -5px 15px rgba(0,0,0,0.05);
+}
+
+.ticket-section-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+
+.ticket-description {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.btn-delete-ticket,
+.btn-assign {
+  padding: 10px 20px;
+  margin-top: 1px;
+  border: none;
+  border-radius: 20px; /* ทำให้ขอบมนแบบ pill */
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* ปุ่มลบ */
+.btn-delete-ticket {
+  background-color: #e74c3c;
+  white-space: nowrap;
+}
+
+.btn-delete-ticket:hover {
+  background-color: #c0392b;
+  transform: scale(1.03);
+}
+
+/* ปุ่มมอบหมาย */
+.btn-assign.success {
+  background-color: #27ae60;
+}
+
+.btn-assign.success:hover {
+  background-color: #219150;
+  transform: scale(1.03);
+}
+
+/* ------ --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---   */
+/* --- Sidebar Styles --- */
+.ticket-sidebar {
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* --- Info List --- */
+.ticket-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ticket-info-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #ececec;
+  color: #333;
+}
+
+.ticket-info-list li:last-child {
+  border-bottom: none;
+}
+
+.ticket-info-list strong {
+  color: #444;
+  font-weight: 600;
+  min-width: 120px;
+}
+
+/* --- Assign Section --- */
+.ticket-assign {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ticket-assign label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* --- Status Select Section --- */
+.ticket-status-edit label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+/* --- Button Styling (reused class from previous) --- */
+/* .btn-assign,
+.btn-delete-ticket {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-assign.success {
+  background-color: #27ae60;
+}
+
+.btn-assign.success:hover {
+  background-color: #1e8449;
+  transform: scale(1.03);
+}
+
+.btn-delete-ticket.danger {
+  background-color: #e74c3c;
+}
+
+.btn-delete-ticket.danger:hover {
+  background-color: #c0392b;
+  transform: scale(1.03);
+} */
+
+/* ------ --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---   */
+/* --- Attachments Section --- */
+/* --- Image Attachments --- */
+.image-attachments {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* กล่องภาพหลักปรับขนาด */
+.image-main-preview-container {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 1.5rem;
+}
+
+/* ภาพหน้าหลักก่อนกด (ขนาดพอดีจอ) */
+.image-main-preview {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: contain;
+  max-height: 400px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+/* กล่อง thumbnails แนวนอน + ปุ่มเลื่อน */
+.image-thumbnail-carousel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+}
+
+/* container thumbnails ที่ scroll ได้ */
+.image-thumbnail-scrollable {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.75rem;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.image-thumbnail-scrollable::-webkit-scrollbar {
+  display: none;
+}
+
+/* thumbnail แต่ละภาพ */
+.image-thumbnail {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  opacity: 0.6;
+  flex-shrink: 0;
+  /* transition: 0.2s; */
+  cursor: pointer;
+}
+
+/* thumbnail ที่ active หรือ hover */
+.image-thumbnail.active,
+.image-thumbnail:hover {
+  opacity: 1;
+  border: 2px solid #0073e6;
+}
+
+/* ปุ่มเลื่อนซ้าย/ขวา thumbnail */
+.image-thumb-nav {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 0.3rem 0.8rem;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s;
+}
+.image-thumb-nav:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* --- Lightbox สำหรับรูปภาพ --- */
+/* --- Lightbox Overlay ครอบทั้งหน้าจอ --- */
+.image-lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* กล่องหลักของ lightbox */
+.image-lightbox-inner {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  max-width: 999vh; /* กำหนดความกว้างสูงสุดของหน้าจอ */
+  max-height: 99vh; /* กำหนดความสูงสุดของหน้าจอ */
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* พื้นที่แสดงภาพหลัก */
+.image-lightbox-main-view {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /* height: 70vh; <-- ลบอันนี้ออก */
+  padding: 1rem 0;
+}
+
+/* ภาพหลักใน lightbox */
+.image-lightbox-image {
+  max-width: 50vw;       /* จำกัดความกว้างไม่เกิน 50% ของ viewport */
+  max-height: 80vh;      /* จำกัดความสูงไม่เกิน 80% ของ viewport */
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* thumbnails ด้านล่างใน lightbox */
+.image-lightbox-thumbnails {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+/* ไม่บีบ ไม่ยืด ยึดตามขนาดภาพจริงภายในกรอบจำกัด */
+.image-lightbox-thumbnail {
+  height: 70px;            /* ความสูง thumbnail */
+  width: auto;             /* กว้างตามสัดส่วนจริง */
+  object-fit: scale-down;  /* แสดงภาพแบบย่อโดยไม่บีบ */
+  border-radius: 6px;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: 0.2s;
+  flex-shrink: 0;
+  background-color: #fff;  /* เพื่อให้ภาพแนวตั้งไม่จมหายบนพื้นโปร่ง */
+}
+
+.image-lightbox-thumbnail.active,
+.image-lightbox-thumbnail:hover {
+  opacity: 1;
+  border: 2px solid #0073e6;
+}
+
+/* ปุ่มปิด lightbox */
+.image-lightbox-close {
+  position: absolute;
+  top: -7px;
+  right: -2px;
+  font-size: 2.2rem;
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  z-index: 3;
+  transition: color 0.2s ease;
+}
+.image-lightbox-close:hover {
+  color: #e53e3e;
+}
+
+/* ปุ่มลูกศรซ้ายขวา */
+.image-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  z-index: 2;
+}
+
+.image-lightbox-nav:hover {
+  background: #0073e6;
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.image-lightbox-nav.prev {
+  left: 12px;
+}
+
+.image-lightbox-nav.next {
+  right: 12px;
+}
+
+
+/* ------ --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---   */
+/* Video Attachment */
+/* แสดงวิดีโอหลัก */
+.video-attachments-main-video {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+/* สไตล์ของวิดีโอหลัก */
+.video-preview {
+  width: 100%;
+  max-width: 540px;
+  max-height: 360px;
+  border-radius: 10px;
+  background: #000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  object-fit: contain;
+}
+
+/* กล่องรวม thumbnails (ภาพขนาดย่อ) และปุ่มเลื่อน */
+.video-thumbnails-carousel-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 660px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* แถบ thumbnails (ภาพขนาดย่อ) ที่ scroll ได้ */
+.video-thumbnails-scrollable {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 0.75rem;
+  scrollbar-width: none;
+}
+.video-thumbnails-scrollable::-webkit-scrollbar {
+  display: none;
+}
+
+/* รูป thumbnail (ภาพขนาดย่อ) ของวิดีโอแต่ละอัน */
+.video-thumbnail {
+  width: 90px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+  opacity: 0.5;
+  transition: 0.2s;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* เมื่อ hover หรือถูกเลือกให้แสดงชัดขึ้น */
+.video-thumbnail:hover,
+.video-thumbnail.active {
+  opacity: 1;
+  border: 2px solid #0073e6;
+}
+
+/* ปุ่มเลื่อนซ้าย/ขวาของ thumbnail (ภาพขนาดย่อ) แถวหลัก */
+.video-thumb-nav {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 1.3rem;
+  padding: 0.3rem 0.8rem;
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s;
+}
+.video-thumb-nav:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* lightbox overlay (พื้นหลังดำตอนดูวิดีโอเต็มจอ) */
+.video-lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.88);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* กล่องเนื้อหาใน lightbox */
+.video-lightbox-inner {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* พื้นที่แสดงวิดีโอหลักใน lightbox */
+.video-lightbox-main-view {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* วิดีโอหลักใน lightbox */
+.video-lightbox-video {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #000;
+}
+
+/* แถว thumbnails (ภาพขนาดย่อ) ด้านล่างใน lightbox */
+.video-lightbox-thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+/* thumbnail (ภาพขนาดย่อ) ใน lightbox */
+.video-lightbox-thumbnail {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 1s;
+}
+.video-lightbox-thumbnail.active,
+.video-lightbox-thumbnail:hover {
+  opacity: 1;
+  border: 2px solid #0073e6;
+}
+
+/* ปุ่มปิด lightbox */
+.video-lightbox-close {
+  position: absolute;
+  top: -7px;
+  right: -2px;
+  font-size: 2.2rem;
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  z-index: 3;
+  transition: color 0.2s ease;
+}
+.video-lightbox-close:hover {
+  color: #e53e3e;
+}
+
+/* ปุ่มเลื่อนซ้าย/ขวาใน lightbox */
+.video-lightbox-nav {
+  position: absolute;                          /* ให้อยู่แบบลอยเหนือเนื้อหา */
+  top: 50%;                                    /* จัดตรงกลางแนวตั้ง */
+  transform: translateY(-50%);                 /* ปรับให้ปุ่มอยู่ตรงกลางจริงๆ */
+  background: rgba(255, 255, 255, 0.8);         /* พื้นหลังสีขาวใส */
+  color: #333;                                  /* สีลูกศร */
+  width: 48px; height: 48px;                   /* ขนาดปุ่ม */
+  border: none; border-radius: 50%;            /* ปุ่มกลม */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);   /* เงาด้านล่าง */
+  display: flex; align-items: center; justify-content: center; /* จัดลูกศรให้อยู่กลางปุ่ม */
+  font-size: 1.5rem; cursor: pointer;
+  transition: all 0.2s ease-in-out;            /* เพิ่มเอฟเฟกต์นุ่ม */
+  z-index: 2;
+}
+.video-lightbox-nav:hover {
+  background: #0073e6;                         /* พื้นหลังเปลี่ยนเป็นฟ้าเมื่อ hover */
+  color: white;                                /* ลูกศรเปลี่ยนเป็นสีขาว */
+  transform: translateY(-50%) scale(1.1);      /* ขยายเล็กน้อยตอน hover */
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);   /* เพิ่มเงาตอน hover */
+}
+.video-lightbox-nav.prev {
+  left: 12px;
+}
+.video-lightbox-nav.next {
+  right: 12px;
+}
+
+/* File Attachment */
+.ticket-file-list {
+  list-style: none;       /* ลบ bullet */
+  padding-left: 0;        /* ลบ padding ซ้าย */
+  margin: 0.5rem 0 1rem;  /* เว้นระยะด้านบน/ล่าง */
+}
+
+/* แต่ละไฟล์ใน list */
+.ticket-file-list li {
+  margin-bottom: 0.5rem; /* เว้นระหว่างไฟล์ */
+}
+
+/* ลิงก์สำหรับดาวน์โหลดไฟล์ */
+.ticket-file-list a {
+  color: #0066cc;           /* สีฟ้า */
+  text-decoration: none;    /* ลบขีดใต้ */
+  font-weight: 500;         /* เน้นนิดหน่อย */
+  transition: color 0.2s;
+}
+
+/* ลิงก์ตอน hover */
+.ticket-file-list a:hover {
+  text-decoration: underline; /* ขีดใต้เมื่อชี้ */
+  color: #004c99;
+}
+
+@media (max-width: 1150px) {
+  .ticket-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem;
+  }
+
+  .ticket-sidebar {
+    width: 100%;
+    padding: 1.25rem;
+    box-shadow: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+  }
+
+  .btn-assign,
+  .btn-delete-ticket {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 0.75rem;
+    text-align: center;
+  }
+
+  .ticket-info-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  /* ✅ แก้ตรงนี้: เปลี่ยนกลับมาแนวนอนเหมือนจอใหญ่ */
+  .ticket-header {
+    display: flex;
+    flex-direction: row;             /* เปลี่ยนจาก column → row */
+    justify-content: space-between; /* หัวข้อซ้าย ปุ่มขวา */
+    align-items: center;             /* จัดแนวให้อยู่กึ่งกลาง */
+    flex-wrap: wrap;                 /* ถ้าจอแคบมาก จะย่อหรือขึ้นบรรทัดใหม่ได้ */
+    gap: 0.75rem;
+  }
+
+  .ticket-title {
+    font-size: 1.6rem;
+    word-break: break-word;
+  }
+
+  /* ✅ ปรับปุ่มลบให้เหมาะกับจอเล็ก แต่ยังอยู่ขวาและไม่เต็มจอ */
+  .btn-delete-ticket {
+    width: auto;                   /* ยกเลิก 100% */
+    max-width: 180px;              /* จำกัดความกว้าง */
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+    text-align: center;
+    border-radius: 24px;
+    margin-left: auto;             /* ดันไปด้านขวา */
+  }
+}
+
+@media (max-width: 420px) {
+  .ticket-header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .ticket-title-group {
+    width: 100%;
+  }
+
+  .ticket-action-group {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+  }
+
+  .ticket-action-group .status-badge,
+  .ticket-action-group button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+    white-space: nowrap;
+  }
+}
+
+

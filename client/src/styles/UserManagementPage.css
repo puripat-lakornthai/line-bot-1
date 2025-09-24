@@ -1,0 +1,195 @@
+/* ✅ พื้นหลังของทั้งหน้า */
+.user-page-container {
+  padding: 48px 24px;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  font-family: 'Segoe UI', 'Noto Sans Thai', sans-serif;
+}
+
+/* ✅ กล่องครอบทั้งหมด */
+.user-content-wrapper {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  overflow-x: visible;
+}
+
+/* ✅ ส่วนหัว (หัวข้อ + ปุ่ม) */
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.user-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* ✅ ปุ่มเพิ่มผู้ใช้ */
+.user-btn-add {
+  background-color: #3b82f6;
+  color: white;
+  padding: 10px 18px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.user-btn-add:hover {
+  background-color: #2563eb;
+}
+
+/* ✅ กล่องครอบ table ที่ scroll แนวนอนได้ */
+.user-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+}
+
+/* ✅ ตารางผู้ใช้ */
+.user-table {
+  width: 100%;
+  min-width: 1200px;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+/* ✅ หัวตาราง sticky */
+.user-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  padding: 12px 16px;
+  border-bottom: 2px solid #e2e8f0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* ✅ ข้อมูลแต่ละแถว */
+.user-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #374151;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+/* ✅ Badge ของ Role */
+.user-role-badge {
+  display: inline-block;
+  background-color: #374151;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* ✅ ปุ่ม Action */
+.user-btn {
+  padding: 6px 12px;
+  font-size: 0.85em;
+  border: none;
+  border-radius: 6px;
+  margin-right: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.user-btn-edit {
+  background-color: #facc15;
+  color: #1f2937;
+}
+.user-btn-edit:hover {
+  background-color: #eab308;
+}
+
+.user-btn-delete {
+  background-color: #ef4444;
+  color: white;
+}
+.user-btn-delete:hover {
+  background-color: #dc2626;
+}
+
+/* ✅ Responsive Design */
+@media (max-width: 768px) {
+  .user-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .user-btn-add {
+    width: 100%;
+  }
+
+  .user-content-wrapper {
+    padding: 20px;
+  }
+
+  .user-table {
+    min-width: 900px;
+  }
+
+  .user-table th,
+  .user-table td {
+    font-size: 0.85rem;
+    padding: 10px 12px;
+  }
+
+  .user-btn {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+}
+
+/* <div className="user-header sticky-header"> */
+/* .sticky-header {
+  position: sticky;
+  top: 64px;
+  background: white;
+  z-index: 10;
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+} */
+
+.pagination-controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+
+.pagination-controls button {
+  padding: 6px 14px;
+  background: #e2e8f0;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  background: #cbd5e1;
+}
+
+.pagination-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

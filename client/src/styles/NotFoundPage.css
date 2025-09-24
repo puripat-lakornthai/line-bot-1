@@ -1,0 +1,88 @@
+/* NotFoundPage.css */
+
+.notfound-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 10vh; /* เต็มจอแนวตั้ง */
+  padding: 2rem;
+}
+
+.notfound-card {
+  background: white;
+  padding: 4rem 3rem; /* เพิ่ม padding */
+  border-radius: 1.25rem;
+  max-width: 600px; /* เพิ่มขนาดความกว้าง */
+  width: 100%;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1); /* เงาลึกขึ้นเล็กน้อย */
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.notfound-card:hover {
+  transform: translateY(-5px);
+}
+
+.notfound-illustration {
+  width: 100%;
+  max-height: 320px; /* ขยายภาพให้เด่นขึ้น */
+  object-fit: contain;
+  margin-bottom: 2.5rem;
+  border-radius: 0.75rem;
+}
+
+.notfound-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.notfound-description {
+  font-size: 1.1rem;
+  color: #4b5563;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.notfound-button {
+  display: inline-block;
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.notfound-button:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .notfound-card {
+    padding: 2rem 1.5rem; /* ลด padding */
+  }
+
+  .notfound-title {
+    font-size: 1.75rem; /* ลดขนาด font title */
+  }
+
+  .notfound-description {
+    font-size: 1rem; /* ลด font และระยะห่าง */
+    margin-bottom: 1.5rem;
+  }
+
+  .notfound-button {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.5rem;
+  }
+
+  .notfound-illustration {
+    max-height: 200px; /* ย่อขนาดภาพ */
+    margin-bottom: 1.5rem;
+  }
+}
