@@ -8,7 +8,7 @@
   "keywords": ["helpdesk", "ticket", "support"],
   "scripts": {
     "start": "node src/index.js",                 
-    "start:prod:local": "cross-env NODE_ENV=production node src/index.js", 
+    "prod": "cross-env NODE_ENV=production node src/index.js", 
     "dev": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:init": "psql -U your_postgres_user -d my_helpdesk_db -a -f schema.sql"

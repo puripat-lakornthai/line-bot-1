@@ -32,21 +32,7 @@ const StaffWorkloadPage = () => {
     {
       title: '', // คอลัมน์สำหรับปุ่ม "ดูงาน"
       render: (_, record) => (
-        <button
-          type="button"
-          onClick={() => setSelectedStaff(record)}
-          style={{
-            background: 'none',
-            border: 'none',
-            padding: 0,
-            margin: 0,
-            color: '#1677ff',
-            textDecoration: 'underline',
-            cursor: 'pointer'
-          }}
-        >
-          ดูงาน
-        </button>
+        <a onClick={() => setSelectedStaff(record)}>ดูงาน</a>
       )
     }
   ];
@@ -88,6 +74,7 @@ const StaffWorkloadPage = () => {
                 columns={columns}
                 rowKey="user_id"
                 pagination={false}
+                bordered={false}
               />
             </div>
 
