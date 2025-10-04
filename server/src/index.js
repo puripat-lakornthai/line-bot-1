@@ -26,29 +26,25 @@ const allowedOrigins = [
   process.env.CLIENT_URL, // ใช้จาก .env
   // 'http://localhost:3000',
   // 'http://localhost:5000',
-  /^https:\/\/[a-z0-9\-]+\.ngrok-free\.app$/, // รองรับ ngrok
-  /^https:\/\/.*\.trycloudflare\.com$/,       // รองรับ cloudflare tunnel
-  /^https:\/\/[a-z0-9\-]+\.loca\.lt$/,        // รองรับ localtunnel
-  'https://puripat.online',
+  /^https:\/\/[a-z0-9\-]+\.ngrok-free\.app$/, // รองรับ ngrok และลองใช้ให้ติดต่อกับ frontend แล้ว ngrok พังเพราะมันมีปัญหาอะไรสักอย่างกับ CORS 
+  /^https:\/\/.*\.trycloudflare\.com$/, // รองรับ cloudflare tunnel
+  /^https:\/\/[a-z0-9\-]+\.loca\.lt$/, // รองรับ localtunnel
+  "https://puripat.online",
 ];
 
-// CORS whitelist + credentials  (แก้เฉพาะส่วนนี้)
-const corsOptions = {
+// CORS whitelist + credentials
+app.use(cors({
   origin: (origin, callback) => {
-    if (!origin) return callback(null, true); // อนุญาต Postman/curl
+    if (!origin) return callback(null, true);
     const ok = allowedOrigins.some(o =>
       o instanceof RegExp ? o.test(origin) : o === origin
     );
-    return ok ? callback(null, true) : callback(new Error('Not allowed by CORS'));
+    if (ok) return callback(null, origin);
+    return callback(new Error('Not allowed by CORS'));
   },
-  credentials: true, // ถ้าไม่ใช้คุกกี้สามารถเปลี่ยนเป็น false ได้
-  methods: ['GET','POST','PUT','PATCH','DELETE','OPTIONS'],            // ✅ เพิ่ม
-  allowedHeaders: ['Content-Type','Authorization','X-Requested-With'], // ✅ เพิ่ม
-  optionsSuccessStatus: 204                                            // ✅ เพิ่ม
-};
-app.use(cors(corsOptions));
-// ✅ ให้ตอบ OPTIONS ทุก path เพื่อให้ preflight ผ่าน
-app.options('*', cors(corsOptions));
+  credentials: true,
+  optionsSuccessStatus: 200,
+}));
 
 // ตรวจสอบ path webhook ก่อนใช้
 const lineWebhookPath = process.env.LINE_WEBHOOK_PATH || '/webhook';
