@@ -22,8 +22,17 @@ const getTasksByStaffId = async (userId) => {
   }
 };
 
-// export แบบ object
-export default {
+// ❌ ESLint ฟ้อง import/no-anonymous-default-export
+// export แบบ default object (anonymous)
+// export default {
+//   getStaffWorkload,
+//   getTasksByStaffId,
+// };
+
+// export แบบ default object (named ไปหา staffService)
+const staffService = {
   getStaffWorkload,
   getTasksByStaffId,
 };
+
+export default staffService;

@@ -24,15 +24,29 @@ const StaffWorkloadPage = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  // ✅ คอลัมน์ของตาราง รวมปุ่ม "ดูงาน"
+  // คอลัมน์ของตาราง รวมปุ่ม "ดูงาน"
   const columns = [
     { title: 'ชื่อพนักงาน', dataIndex: 'full_name' },
     { title: 'เบอร์โทรศัพท์', dataIndex: 'phone', render: v => v || '-' },
     { title: 'จำนวนงานที่รับ', dataIndex: 'ticket_count' },
     {
-      title: '', // ✅ คอลัมน์สำหรับลิงก์ "ดูงาน"
+      title: '', // คอลัมน์สำหรับปุ่ม "ดูงาน"
       render: (_, record) => (
-        <a onClick={() => setSelectedStaff(record)}>ดูงาน</a>
+        <button
+          type="button"
+          onClick={() => setSelectedStaff(record)}
+          style={{
+            background: 'none',
+            border: 'none',
+            padding: 0,
+            margin: 0,
+            color: '#1677ff',
+            textDecoration: 'underline',
+            cursor: 'pointer'
+          }}
+        >
+          ดูงาน
+        </button>
       )
     }
   ];
@@ -92,7 +106,7 @@ const StaffWorkloadPage = () => {
           </>
         )}
 
-        {/* ✅ แสดง modal รายงานงานของพนักงานเมื่อกด "ดูงาน" */}
+        {/* แสดง modal รายงานงานของพนักงานเมื่อกด "ดูงาน" */}
         <TaskModal
           visible={!!selectedStaff}
           staff={selectedStaff}

@@ -37,7 +37,8 @@ const logout = async () => {
   }
 };
 
-// 👇 export แบบ object เหมือน ticketService
+// Default Export แบบ object named เหมือน service อื่นๆ
+// ตอนแรกใช้แบบ export แบบ default object มันติด error ตอน production
 const authService = {
   login,
   logout,

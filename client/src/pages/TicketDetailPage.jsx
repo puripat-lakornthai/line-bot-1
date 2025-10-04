@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Select, Spin, Alert } from 'antd';
 import { toast } from 'react-toastify';
@@ -53,7 +53,7 @@ const TicketDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  useEffect(() => { if (id) loadTicket(); }, [id]);
+  // useEffect(() => { if (id) loadTicket(); }, [id]);
 
   // ตรวจสอบสิทธิ์ของ staff หากไม่ได้รับมอบหมาย จะ redirect ออกจากหน้า
   // useEffect(() => {
@@ -69,7 +69,7 @@ const TicketDetailPage = () => {
   // }, [ticket, currentUser, isAdmin, isStaff, navigate]);
 
   // โหลดข้อมูล ticket และ staff พร้อมกัน ***
-  const loadTicket = async () => {
+  const loadTicket = useCallback(async () => {
     try {
       const [t, staff] = await Promise.all([
         ticketService.getTicketById(id),
@@ -95,7 +95,12 @@ const TicketDetailPage = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id, navigate]);
+
+  // เรียกโหลดเมื่อ id เปลี่ยน (เหลือ useEffect ตัวเดียว)
+  useEffect(() => {
+    if (id) loadTicket();
+  }, [id, loadTicket]);
 
   // โหลด ticket ใหม่เมื่อมีการอัปเดต
   const refresh = async () => {

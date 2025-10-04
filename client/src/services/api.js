@@ -18,7 +18,7 @@ const api = axios.create({
   // withCredentials: true
 });
 
-// ► Request interceptor: ทำงานก่อนส่งทุกคำขอ
+// Request interceptor: ทำงานก่อนส่งทุกคำขอ
 api.interceptors.request.use(
   (config) => {
     // ดึง token ที่เก็บใน localStorage
@@ -34,7 +34,7 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// ► Response interceptor: ทำงานหลังได้ response หรือ error มา
+// Response interceptor: ทำงานหลังได้ response หรือ error มา
 api.interceptors.response.use(
   // กรณี response ปกติ (status 2xx) ก็ให้ return ตรงๆ
   (response) => response,

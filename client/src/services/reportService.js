@@ -15,8 +15,17 @@ const downloadReport = async () => {
   return response.data;
 };
 
-// export แบบ default object
-export default {
+// ❌ ESLint ฟ้อง import/no-anonymous-default-export
+// export แบบ default object (anonymous)
+// export default {
+//   getSummary,
+//   downloadReport
+// };
+
+// Default Export แบบ object (named ไปหา reportService)
+const reportService = {
   getSummary,
-  downloadReport
+  downloadReport,
 };
+
+export default reportService;

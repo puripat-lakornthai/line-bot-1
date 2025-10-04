@@ -51,8 +51,19 @@ const getAllStaff = async () => {
   return response.data;
 };
 
-// export ฟังก์ชันทั้งหมดแบบ object
-export default {
+// ❌ ESLint ฟ้อง import/no-anonymous-default-export
+// export แบบ default object (anonymous)
+// export default {
+//   getAllUsers,
+//   getUserById,
+//   createUserByAdmin,
+//   updateUserByAdmin,
+//   deleteUserByAdmin,
+//   getAllStaff,
+// };
+
+// Default Export แบบ object (named ไปหา userService)
+const userService = {
   getAllUsers,
   getUserById,
   createUserByAdmin,
@@ -60,3 +71,5 @@ export default {
   deleteUserByAdmin,
   getAllStaff,
 };
+
+export default userService;

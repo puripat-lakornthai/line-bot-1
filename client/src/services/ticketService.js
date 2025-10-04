@@ -1,5 +1,4 @@
 // client/src/services/ticketService.js
-
 import api from './api'; // axios instance ที่ตั้งค่า baseURL แล้ว
 
 // สร้าง Ticket ใหม่
@@ -105,8 +104,19 @@ const deleteTicket = async (ticketId) => {
   }
 };
 
-// รวมฟังก์ชันทั้งหมดไว้ในตัวแปรเดียวสำหรับ export
-export default {
+// ❌ ESLint ฟ้อง import/no-anonymous-default-export
+// export แบบ default object (anonymous)
+// export default {
+//   createTicket,
+//   getAllTickets,
+//   getTicketById,
+//   updateTicket,
+//   deleteTicket,
+//   assignTicket,
+// };
+
+// export แบบ default object (named ไปหา ticketService)
+const ticketService = {
   createTicket,
   getAllTickets,
   getTicketById,
@@ -114,3 +124,5 @@ export default {
   deleteTicket,
   assignTicket,
 };
+
+export default ticketService;

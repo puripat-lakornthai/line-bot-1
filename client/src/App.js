@@ -34,7 +34,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // destructure layout ออกมาใช้งาน
-const { Content, Footer } = Layout;
+const { Content } = Layout;
 
 // คอมโพเนนต์หลักของแอป
 function App() {
