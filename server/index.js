@@ -1,5 +1,6 @@
-// server/src/index.js
+// /index.js
 const path = require('path');
+const fs = require('fs');
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -7,23 +8,29 @@ const dotenv = require('dotenv');
 
 const app = express();
 
-// โหลด env ตาม NODE_ENV
+// โหลด env ตาม NODE_ENV (ถ้ามีไฟล์ .env.* ก็อ่าน; ถ้าไม่มี ใช้ ENV จากระบบ)
 const envPath = process.env.NODE_ENV === 'production'
   ? path.join(__dirname, '../.env.production')
-  : path.join(__dirname, '../.env');
-dotenv.config({ path: envPath });
+  : path.join(__dirname, '../.env.development');
+
+if (fs.existsSync(envPath)) {
+  dotenv.config({ path: envPath, override: false });
+  console.log(`✅ Loaded ${envPath}`);
+} else {
+  console.log(`⚠️ No env file found (${envPath}) — using system environment variables`);
+}
 
 // โหลด routes
-const authRoutes = require('./routes/authRoutes');
-const ticketRoutes = require('./routes/ticketRoutes');
-const lineRoutes = require('./line/routes/lineRoutes');
-const userRoutes = require('./routes/userRoutes');
-const statsRoutes = require('./routes/statsRoutes');
-const reportRoutes = require('./routes/reportRoutes');
+const authRoutes = require('./src/routes/authRoutes');
+const ticketRoutes = require('./src/routes/ticketRoutes');
+const lineRoutes = require('./src/line/routes/lineRoutes');
+const userRoutes = require('./src/routes/userRoutes');
+const statsRoutes = require('./src/routes/statsRoutes');
+const reportRoutes = require('./src/routes/reportRoutes');
 
 // ตั้งค่า origin ที่อนุญาต
 const allowedOrigins = [
-  process.env.CLIENT_URL, // ใช้จาก .env
+  process.env.CLIENT_URL, // ใช้จาก .env.development
   // 'http://localhost:3000',
   // 'http://localhost:5000',
   /^https:\/\/[a-z0-9\-]+\.ngrok-free\.app$/, // รองรับ ngrok และลองใช้ให้ติดต่อกับ frontend แล้ว ngrok พังเพราะมันมีปัญหาอะไรสักอย่างกับ CORS 
@@ -87,7 +94,7 @@ app.get('/health', (req, res) => {
 setInterval(() => {
   console.log(`🧹 ล้างไฟล์ temp (${new Date().toLocaleString('th-TH')})`);
   try {
-    const { cleanOldTempFiles } = require('./line/services/mediaService');
+    const { cleanOldTempFiles } = require('./src/line/services/mediaService');
     cleanOldTempFiles(60);
   } catch (err) {
     console.error('❌ ล้างไฟล์ temp ล้มเหลว:', err.message);
