@@ -10,8 +10,8 @@ const app = express();
 
 // โหลด env ตาม NODE_ENV (ถ้ามีไฟล์ .env.* ก็อ่าน; ถ้าไม่มี ใช้ ENV จากระบบ)
 const envPath = process.env.NODE_ENV === 'production'
-  ? path.join(__dirname, '../.env.production')
-  : path.join(__dirname, '../.env.development');
+  ? path.join(__dirname, '.env.production')
+  : path.join(__dirname, '.env.development');
 
 if (fs.existsSync(envPath)) {
   dotenv.config({ path: envPath, override: false });

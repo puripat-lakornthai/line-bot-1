@@ -4,10 +4,10 @@ const path = require('node:path');
 const fs = require('node:fs');
 
 // โหลด .env.development เฉพาะตอนที่ไม่ใช่ production และ "ไม่ override" ค่า ENV จากแพลตฟอร์ม
-const envPath = path.join(__dirname, '../../.env.development');
-if (process.env.NODE_ENV !== 'production' && fs.existsSync(envPath)) {
-  require('dotenv').config({ path: envPath, override: false });
-}
+// const envPath = path.join(__dirname, '../../.env.development');
+// if (process.env.NODE_ENV !== 'production' && fs.existsSync(envPath)) {
+//   require('dotenv').config({ path: envPath, override: false });
+// }
 
 const dbConfig = {
   host: process.env.DB_HOST || 'localhost',
@@ -29,7 +29,7 @@ async function testDbConnection() {
   let connection;
   try {
     connection = await pool.getConnection();
-    console.log('✅🐬 Successfully connected to the MySQL database via pool.');
+    console.log('✅ Successfully connected to the MySQL database via pool.');
     const [rows] = await connection.query('SELECT VERSION() as version');
     console.log('🔬 MySQL Version:', rows[0].version);
   } catch (err) {
